@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', function () {
-    return view('home');
+Route::get('/admin', function () {
+    return view('dashboard.index');
 });
+
+Route::prefix('admin') -> group(function ()
+    {
+        Route::get('/dashboard', 'DashboardController');
+    }
+
+);
+
+Route::prefix('user') -> group(function()
+    {
+
+    }
+);
