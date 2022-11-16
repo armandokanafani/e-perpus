@@ -14,13 +14,18 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 |
 */
 
-Route::get('/admin', function () {
-    return view('dashboard.index');
+Route::get('/', function () {
+    return view('pages/dashboard.index');
 });
 
 Route::prefix('admin') -> group(function ()
     {
-        Route::get('/dashboard', 'DashboardController');
+        Route::get('/', function() {
+            return view('pages/admin.index');
+        });
+        Route::get('/buku', function(){
+            return view('pages/admin.book');
+        });
     }
 
 );
